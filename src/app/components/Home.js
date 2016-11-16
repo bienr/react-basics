@@ -5,13 +5,18 @@ export class Home extends React.Component {
         super();
         this.state = {
             age: props.initialAge,
-            status: 0
+            status: 0,
+            homeLink: "Frommy"
         }
         setInterval(() => {
             this.setState({
                 status: this.state.status += 1
             });
         }, 1000);
+    }
+
+    onChangeLink() {
+        this.props.changeLink(this.state.homeLink);
     }
 
     onMakeOlder() {
@@ -28,6 +33,9 @@ export class Home extends React.Component {
                 <p>Time: {this.state.status} seconds</p>
                 <button className="btn btn-primary" onClick={() => this.onMakeOlder()}>Make me older!</button>&nbsp;&nbsp;
                 <button className="btn btn-success" onClick={this.props.greet}>Greeter</button>
+                <hr/>
+                <button className="btn btn-info" onClick={this.onChangeLink.bind(this)}>Change name</button>
+                <input type="text"/>
             </div>
         );
     }
@@ -36,5 +44,7 @@ export class Home extends React.Component {
 Home.propTypes = {
     name: React.PropTypes.string,
     initialAge: React.PropTypes.number,
-    greet: React.PropTypes.func
+    greet: React.PropTypes.func,
+    changeLink: React.PropTypes.func,
+    homeLink: React.PropTypes.string
 };
