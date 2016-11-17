@@ -1,1 +1,1 @@
-#This is a React JS Basic Project
+#This is a React JS Fundamentals Project
